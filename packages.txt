@@ -1,0 +1,105 @@
+TODO: notification daemon and automount for remoavable devices
+
+- Install Kitty Terminal
+pacman -S kitty
+
+- Install hyprland wm
+pacman -S hyprland
+
+- Install JetBrains Mono Nerd Font
+pacman -S ttf-jetbrains-mono-nerd
+
+- Install uwsm to start Hyprland session on login
+pacman -S uwsm
+
+Add below code to shell profile
+
+if uwsm check may-start; then
+    exec uwsm start hyprland.desktop
+fi
+
+- Install yay (https://github.com/Jguer/yay)
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+
+- Install wget
+pacman -S wget
+
+- Install zen-browser
+yay -Ss zen-browser-bin
+
+- Install brightnessctl for changing brightness and via function keys
+pacman -S brightnessctl
+
+- Install file manager yazi
+pacman -S yazi
+
+- Add shell wrapper for yazi to cd into directory (https://yazi-rs.github.io/docs/quick-start)
+
+Paste in your .bashrc
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+Then 
+
+source .bashrc
+
+Then use y instead of yazi to start, and press q to quit, you'll see the CWD changed.
+Sometimes, you don't want to change, press Q to quit.
+
+- Install tofi app launcher
+yay -S tofi
+
+- Configure tofi entries
+
+/usr/share/applications
+
+Move desktop entries to diffrent location like .backup
+
+- Install miniconda
+
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm ~/miniconda3/miniconda.sh
+
+source ~/miniconda3/bin/activate
+
+conda init --all
+
+- Configure screen sharing (https://wiki.hyprland.org/Useful-Utilities/Screen-Sharing/)
+
+yay -S xdg-desktop-portal-hyprland-git
+
+Add to hyprland config
+
+exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+- Install hyperlock
+
+pacman -S hyprlock
+
+- Install libreoffice
+
+pacman -S libreoffice-fresh
+
+- Install waybar
+
+pacman -S waybar
+
+Set waybar to run as systemd service
+
+systemctl --user enable --now waybar.service
+
+- Install impala for managing wireless connections
+
+pacman -S impala
