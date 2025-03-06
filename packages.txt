@@ -103,3 +103,11 @@ systemctl --user enable --now waybar.service
 - Install impala for managing wireless connections
 
 pacman -S impala
+
+- Install SwayOSD helper
+
+# yay -S swayosd
+
+- Install OpenSSH 
+
+pacman -S openssh
