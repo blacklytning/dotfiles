@@ -111,3 +111,15 @@ pacman -S impala
 - Install OpenSSH 
 
 pacman -S openssh
+
+- Instal PostgreSQL
+
+pacman -s postgresql
+
+- Install fish shell
+
+pacman -s fish
+
+- Install hyprshot
+
+yay -S hyprshot
