@@ -145,3 +145,11 @@ yay -S hyprshot
 - Set neovim as default Git editor
 
 git config --global core. editor "nvim"
+
+- Install nwg-look for GTK customization
+
+pacman -S nwg-look
+
+- Install various fonts
+
+ttf-liberation ttf-nunito ttf-roboto
