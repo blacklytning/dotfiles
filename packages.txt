@@ -152,4 +152,4 @@ pacman -S nwg-look
 
 - Install various fonts
 
-ttf-liberation ttf-nunito ttf-roboto
+ttf-liberation ttf-nunito ttf-roboto ttf-meslo-nerd adobe-source-han-sans-jp-fonts adobe-source-han-sans-kr-fonts
